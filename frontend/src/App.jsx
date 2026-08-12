@@ -18,6 +18,7 @@ function App() {
   const [reservaACancelar, setReservaACancelar] = useState(null);
 
   // Variable de entorno flexible (En local equivale a "", en Render toma la URL del backend)
+  //const API_URL = "";
   const API_URL = import.meta.env.VITE_API_URL || "";
 
   const obtenerReservas = async () => {
@@ -213,8 +214,8 @@ function App() {
           {mensaje && (
             <div
               className={`status-message ${mensaje.includes("correctamente") || mensaje.includes("eliminada")
-                  ? "success"
-                  : "error"
+                ? "success"
+                : "error"
                 }`}
             >
               {mensaje}

@@ -5,11 +5,12 @@ const reservaRoutes = require("./routes/ReservaRoutes");
 
 const app = express();
 
-// Middleware de CORS permitido globalmente
-app.use(cors());
-
-// Manejar explícitamente las peticiones Preflight (OPTIONS)
-app.options("*", cors());
+// Habilitar CORS explícito evitando el comodín global problemático
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.use(express.json());
 
