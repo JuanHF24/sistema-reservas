@@ -1,8 +1,15 @@
 const express = require("express");
+const cors = require("cors");
 
 const reservaRoutes = require("./routes/ReservaRoutes");
 
 const app = express();
+
+// Middleware de CORS permitido globalmente
+app.use(cors());
+
+// Manejar explícitamente las peticiones Preflight (OPTIONS)
+app.options("*", cors());
 
 app.use(express.json());
 
